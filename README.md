@@ -11,3 +11,23 @@
 ## facts
 
 1. most common, graphql-over-http
+
+## what is http
+
+### http request
+
+```http
+GET localhost/something HTTP/1.1
+content-type: plain/text
+
+hello world
+```
+
+### http response
+
+```http
+HTTP/1.1 200 OK
+content-type: plain/text
+
+hello world
+```

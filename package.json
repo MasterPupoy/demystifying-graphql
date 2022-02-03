@@ -4,5 +4,8 @@
   "type": "module",
   "main": "index.js",
   "author": "odjhey <odjhey@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^3.27.0"
+  }
 }
