@@ -1,5 +1,9 @@
 import fastify from "fastify";
-import { getGraphQLParameters, processRequest } from "graphql-helix";
+import {
+  getGraphQLParameters,
+  processRequest,
+  renderGraphiQL,
+} from "graphql-helix";
 
 import { makeExecutableSchema } from "@graphql-tools/schema";
 
@@ -7,6 +11,14 @@ import { typeDefs } from "./graphql/typeDefs.js";
 import { resolvers } from "./graphql/resolvers.js";
 
 const app = fastify();
+
+app.route({
+  method: "GET",
+  url: "/graphql",
+  handler: (req, res) => {
+    res.header("content-type", "text/html").send(renderGraphiQL());
+  },
+});
 
 app.route({
   method: "POST",

@@ -9,7 +9,7 @@ export const resolvers = {
   Query: {
     hello: (parent, args) => {
       // do some computational magic here
-      return `hello ${args.name || "World"}`;
+      return `bonjour ${args.name || "World"}`;
     },
     getUser: (parent, args) => {
       console.log("args", args);
