@@ -12,7 +12,6 @@ export const resolvers = {
       return `bonjour ${args.name || "World"}`;
     },
     getUser: (parent, args) => {
-      console.log("args", args);
       const user = users.find((u) => u.id === args.id);
       return user;
     },
