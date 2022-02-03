@@ -6,14 +6,40 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 // import { typeDefs } from "./graphql/typeDefs.js";
 
 const typeDefs = `
+  type User {
+    id: ID!
+    name: String!
+  }
+
   type Query {
     hello: String
+    me: User
+    getUser: User
   }
 `;
 
 const resolvers = {
   Query: {
-    hello: () => "Hello world!",
+    hello: (parent) => {
+      // do some computational magic here
+      return "the computational magic result";
+    },
+    getUser: (parent) => {
+      return { id: "89898", name: "hulk", what: "asdklfj" };
+    },
+    me: (parent) => {
+      return { id: "123" };
+    },
+  },
+  User: {
+    name: (parent) => {
+      if (parent.name) {
+        return parent.name;
+      }
+
+      // do database query here.
+      return "hindi si john";
+    },
   },
 };
 

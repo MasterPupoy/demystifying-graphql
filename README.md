@@ -11,6 +11,10 @@
 ## facts
 
 1. most common, graphql-over-http
+1. schema = typedefinition + resolver
+   1. typedef = structure of the data
+   2. resolver = actual data/behavior
+1. typedef and resolvers should mirror each other
 
 ## what is http
 
