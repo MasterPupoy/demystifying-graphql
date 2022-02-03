@@ -10,7 +10,8 @@ export const resolvers = {
       const user = context.users.find((u) => u.id === args.id);
       return user;
     },
-    me: (parent) => {
+    me: (parent, args, context) => {
+      console.log("context ni me", context);
       return { id: "123" };
     },
   },
