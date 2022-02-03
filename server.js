@@ -1,6 +1,51 @@
 import fastify from "fastify";
+import { getGraphQLParameters, processRequest } from "graphql-helix";
+
+import { makeExecutableSchema } from "@graphql-tools/schema";
+
+// import { typeDefs } from "./graphql/typeDefs.js";
+
+const typeDefs = `
+  type Query {
+    hello: String
+  }
+`;
+
+const resolvers = {
+  Query: {
+    hello: () => "Hello world!",
+  },
+};
 
 const app = fastify();
+
+app.route({
+  method: "POST",
+  url: "/graphql",
+  handler: async (req, res) => {
+    const request = {
+      body: req.body,
+      headers: req.headers,
+      method: req.method,
+      query: req.query,
+    };
+
+    const { operationName, query, variables } = getGraphQLParameters(request);
+
+    const result = await processRequest({
+      operationName,
+      query,
+      variables,
+      request,
+      schema: makeExecutableSchema({ typeDefs, resolvers }),
+    });
+
+    if (result.type === "RESPONSE") {
+      res.status(result.status);
+      res.send(result.payload);
+    }
+  },
+});
 
 app.route({
   method: "GET",
