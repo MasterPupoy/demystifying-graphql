@@ -3,7 +3,10 @@ import { User } from "../services/user.service.js";
 export const resolvers = {
   Query: {
     samuraiList: (parent, args, context) => {
-      return context.db.samurai.findMany({});
+      return context.db.samurai.findMany({
+        skip: args.pageParams.offset,
+        take: args.pageParams.limit,
+      });
     },
     hello: (parent, args) => {
       // do some computational magic here

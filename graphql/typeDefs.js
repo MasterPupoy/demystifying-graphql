@@ -12,11 +12,18 @@ export const typeDefs = gql`
     password: String!
   }
 
+  input PaginationParams {
+    limit: Int!
+    offset: Int!
+  }
+
   type Query {
     hello(name: String): String
     me: User
     getUser(id: ID!): User
-    samuraiList: [Samurai!]!
+    samuraiList(
+      pageParams: PaginationParams = { limit: 5, offset: 0 }
+    ): [Samurai!]!
   }
 
   type Samurai {
