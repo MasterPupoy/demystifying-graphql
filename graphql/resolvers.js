@@ -19,6 +19,17 @@ export const resolvers = {
       return { id: "123" };
     },
   },
+  Mutation: {
+    createUser: (parent, args) => {
+      const user = {
+        id: Math.random().toString(),
+        name: args.input.name,
+        email: args.input.email,
+      };
+      users.push(user);
+      return user;
+    },
+  },
   User: {
     name: (parent) => {
       if (parent.name) {

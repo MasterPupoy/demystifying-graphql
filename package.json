@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "odjhey <odjhey@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "develop": "nodemon server.js"
+  },
   "dependencies": {
     "@graphql-tools/schema": "^8.3.1",
     "fastify": "^3.27.0",
