@@ -10,6 +10,8 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import { typeDefs } from "./graphql/typeDefs.js";
 import { resolvers } from "./graphql/resolvers.js";
 
+import { users } from "./data/users.js";
+
 const app = fastify();
 
 app.route({
@@ -39,6 +41,9 @@ app.route({
       variables,
       request,
       schema: makeExecutableSchema({ typeDefs, resolvers }),
+      contextFactory: () => ({
+        users,
+      }),
     });
 
     if (result.type === "RESPONSE") {

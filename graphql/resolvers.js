@@ -1,10 +1,4 @@
 import { User } from "../services/user.service.js";
-const users = [
-  { id: "1", name: "John Doe" },
-  { id: "2", name: "Jane Doe" },
-  { id: "3", name: "Ash Ketchum" },
-  { id: "4", name: "Natasha Romanoff" },
-];
 
 export const resolvers = {
   Query: {
@@ -12,8 +6,8 @@ export const resolvers = {
       // do some computational magic here
       return `bonjour ${args.name || "World"}`;
     },
-    getUser: (parent, args) => {
-      const user = users.find((u) => u.id === args.id);
+    getUser: (parent, args, context) => {
+      const user = context.users.find((u) => u.id === args.id);
       return user;
     },
     me: (parent) => {
