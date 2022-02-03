@@ -12,10 +12,12 @@ import { resolvers } from "./graphql/resolvers.js";
 
 import { users } from "./data/users.js";
 import Prisma from "@prisma/client";
+import fastifyCors from "fastify-cors";
 
 const { PrismaClient } = Prisma;
 
 const app = fastify();
+app.register(fastifyCors, {});
 
 app.route({
   method: "GET",
