@@ -2,6 +2,9 @@ import { User } from "../services/user.service.js";
 
 export const resolvers = {
   Query: {
+    samuraiList: (parent, args, context) => {
+      return context.db.samurai.findMany({});
+    },
     hello: (parent, args) => {
       // do some computational magic here
       return `bonjour ${args.name || "World"}`;
@@ -24,6 +27,9 @@ export const resolvers = {
       };
       users.push(user);
       return user;
+    },
+    createSamurai: (parent, args, context) => {
+      return context.db.samurai.create({ data: args.input });
     },
   },
   User,

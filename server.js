@@ -11,6 +11,9 @@ import { typeDefs } from "./graphql/typeDefs.js";
 import { resolvers } from "./graphql/resolvers.js";
 
 import { users } from "./data/users.js";
+import Prisma from "@prisma/client";
+
+const { PrismaClient } = Prisma;
 
 const app = fastify();
 
@@ -43,6 +46,7 @@ app.route({
       schema: makeExecutableSchema({ typeDefs, resolvers }),
       contextFactory: () => ({
         users,
+        db: new PrismaClient(),
       }),
     });
 
