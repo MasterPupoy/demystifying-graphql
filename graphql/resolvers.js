@@ -1,3 +1,4 @@
+import { User } from "../services/user.service.js";
 const users = [
   { id: "1", name: "John Doe" },
   { id: "2", name: "Jane Doe" },
@@ -30,14 +31,5 @@ export const resolvers = {
       return user;
     },
   },
-  User: {
-    name: (parent) => {
-      if (parent.name) {
-        return parent.name;
-      }
-
-      // do database query here.
-      return "hindi si john";
-    },
-  },
+  User,
 };
