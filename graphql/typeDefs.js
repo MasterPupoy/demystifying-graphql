@@ -29,6 +29,8 @@ export const typeDefs = gql`
   type Samurai {
     id: ID!
     name: String!
+    nickname: String
+    age: Int
   }
 
   input CreateSamuraiInput {

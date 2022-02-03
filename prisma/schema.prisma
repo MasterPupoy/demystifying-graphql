@@ -15,4 +15,5 @@ model Samurai {
   name      String   @unique
   updatedAt DateTime @updatedAt
   nickname  String?
+  age       Int?
 }
