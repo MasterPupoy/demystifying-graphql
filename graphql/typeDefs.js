@@ -24,6 +24,8 @@ export const typeDefs = gql`
     samuraiList(
       pageParams: PaginationParams = { limit: 5, offset: 0 }
     ): [Samurai!]!
+
+    nepliksList: [Nepliks!]!
   }
 
   type Samurai {
@@ -35,6 +37,14 @@ export const typeDefs = gql`
 
   input CreateSamuraiInput {
     name: String!
+  }
+
+  type Nepliks {
+    id: ID!
+    title: String!
+    genre: String!
+    duration: Int
+    directedBy: String
   }
 
   type Mutation {

@@ -8,6 +8,14 @@ export const resolvers = {
         take: args.pageParams.limit,
       });
     },
+    nepliksList: async (parent, args, context) => {
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 3000)
+      );
+      return context.db.nepliks.findMany({});
+    },
     hello: (parent, args) => {
       // do some computational magic here
       return `bonjour ${args.name || "World"}`;
