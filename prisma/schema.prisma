@@ -17,3 +17,13 @@ model Samurai {
   nickname  String?
   age       Int?
 }
+
+model Nepliks {
+  id         Int      @id @default(autoincrement())
+  title      String   @unique
+  genre      String
+  duration   Int
+  directedBy String
+
+  updatedAt  DateTime @updatedAt
+}
