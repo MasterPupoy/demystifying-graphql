@@ -24,6 +24,9 @@ export const typeDefs = gql`
     samuraiList(
       pageParams: PaginationParams = { limit: 5, offset: 0 }
     ): [Samurai!]!
+    longSamuraiList(
+      pageParams: PaginationParams = { limit: 5, offset: 0 }
+    ): [Samurai!]!
 
     nepliksList: [Nepliks!]!
   }

@@ -8,6 +8,17 @@ export const resolvers = {
         take: args.pageParams.limit,
       });
     },
+    longSamuraiList: async (parent, args, context) => {
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 3000);
+      });
+      return context.db.samurai.findMany({
+        skip: args.pageParams.offset,
+        take: args.pageParams.limit,
+      });
+    },
     nepliksList: async (parent, args, context) => {
       await new Promise((resolve) =>
         setTimeout(() => {
